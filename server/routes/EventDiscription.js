@@ -5,26 +5,24 @@ router.route("/").post(async (req, res) => {
   try {
     const {
       indexId,
-      Time,
       eventName,
-      eventUrl,
       AddvertiseLink,
       AddvertiseName,
-      CurrentNo,
+      time
     } = req.body;
 
+    let timeToEnd = new Date();
+    timeToEnd = Date.parse(timeToEnd) + (time*1000);
     const eventDiscription = new EventDiscription({
       indexId,
-      Time,
       eventName,
-      eventUrl,
       AddvertiseLink,
       AddvertiseName,
-      CurrentNo,
+      timeToEnd
     });
-
+   
     await eventDiscription.save();
-
+ 
     res.send({ message: "sucsses" });
   } catch (err) {
     console.log(err);
