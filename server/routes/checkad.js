@@ -8,11 +8,9 @@ router.route("/").post(async (req, res) => {
     const Check = await EventDiscription.find({
       eventName: { $eq: eventName },
     });
-    const a = Check[0];
+    const a = Check[Check.length-1];
     const current = new Date();
-
     const aaa = (a.timeToEnd - current) / 1000;
-
     if (aaa > 0) {
       res.json("remaining");
     } else {
