@@ -5,6 +5,8 @@ router.route("/").post(async (req, res) => {
   try {
     const { indexId, eventName, AddvertiseLink, AddvertiseName, time } =
       req.body;
+      let imageId = AddvertiseLink.split('/')[5];
+      let imageUrl = `https://drive.google.com/uc?export=view&id=${imageId}`;
     function addSeconds(numOfSeconds, date) {
       date.setSeconds(date.getSeconds() + numOfSeconds + 10);
 
@@ -16,7 +18,7 @@ router.route("/").post(async (req, res) => {
     const eventDiscription = new EventDiscription({
       indexId,
       eventName,
-      AddvertiseLink,
+      imageUrl,
       AddvertiseName,
       timeToEnd,
     });

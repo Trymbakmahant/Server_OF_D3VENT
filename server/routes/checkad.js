@@ -12,7 +12,7 @@ router.route("/").post(async (req, res) => {
     const current = new Date();
     const aaa = (a.timeToEnd - current) / 1000;
     if (aaa > 0) {
-      res.json("remaining");
+      res.json(a.imageUrl);
     } else {
       res.json("udaa de");
     }
